@@ -1,6 +1,6 @@
-# Dama Planner
+# Wild Oasis API
 
-Dama Enterprise Resource Planner for CBC Health Services
+Rest API for the Wild Oasis Hotel
 
 ## Getting started
 
@@ -24,12 +24,8 @@ API
   "RedisCacheUrl": "127.0.0.1:6379",
   "AllowedOrigins": "http://localhost:3000",
   "ConnectionStrings": {
-    "VishiHoldingData": "User ID=xxxx;Password=xxxx;Server=localhost;Port=5432;Database=vishiholding;Integrated Security=true;Pooling=true;",
-    "VishiHoldingLogger": "User ID=xxxx;Password=xxxx;Server=localhost;Port=5432;Database=logger;Integrated Security=true;Pooling=true;"
-  },
-  "AppSettings": {
-    "AuthorizationServer": "https://login.damafin.net",
-    "EnableDiagnostics": "true"
+    "WildOasisData": "User ID=xxxx;Password=xxxx;Server=localhost;Port=5432;Database=wildoasis;Integrated Security=true;Pooling=true;",
+    "WildOasisLogger": "User ID=xxxx;Password=xxxx;Server=localhost;Port=5432;Database=logger;Integrated Security=true;Pooling=true;"
   },
   "WebProtocolSettings": {
     "Url": "https://localhost",
@@ -39,11 +35,6 @@ API
     "ResourceCode": "427",
     "ValidateTokens": "false",
     "ValidateTokensByUser": "true"
-  },
-  "Features": {
-    "MessageProcessing": {
-      "MessageProcessingEnabled": true
-    }
   },
   "JwtKey": "0FD5B805172C464597D2FFC0025677210381FF67654C4888B3B131445968D173"
 }
