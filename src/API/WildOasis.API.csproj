@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+    <UserSecretsId>ea82494b-0b8a-406b-b0b1-cca4ea8428a1</UserSecretsId>
+    <LangVersion>10</LangVersion>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+	<ItemGroup>
+    <PackageReference Include="Autofac" Version="6.3.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.2.0" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
+
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.3.1" />
+
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.3" />
+    <PackageReference Include="SendGrid" Version="9.27.0" />
+    <PackageReference Include="UAParser" Version="3.1.47" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\Logger\Core.Logger.csproj" />
+    <ProjectReference Include="..\Core\WildOasis.Application.csproj" />
+    <ProjectReference Include="..\Infrastructure.Persistence\WildOasis.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\Infrastructure.Service\WildOasis.Infrastructure.Reporting.csproj" />
+  </ItemGroup>
+
+</Project>

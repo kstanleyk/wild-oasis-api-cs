@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\Stanley\.nuget\packages\select.htmltopdf.netcore\22.1.0\contentFiles\any\any\Select.Html.dep" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Select.HtmlToPdf.NetCore" Version="22.1.0" />
+  </ItemGroup>
+
+</Project>
