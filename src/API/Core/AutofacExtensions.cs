@@ -1,8 +1,8 @@
 using Autofac;
 using WildOasis.API.Services;
-using WildOasis.Application.Common.Branch;
+using WildOasis.Application.Cabin;
 using WildOasis.Infrastructure.Persistence;
-using WildOasis.Infrastructure.Persistence.Repository.Common;
+using WildOasis.Infrastructure.Persistence.Repository;
 
 namespace WildOasis.API.Core;
 
@@ -16,11 +16,11 @@ public static class AutofacExtensions
 
         builder.RegisterType<MessageSender>().As<IMessageSender>().InstancePerLifetimeScope();
 
-        builder.RegisterAssemblyTypes(typeof(BranchPersistence).Assembly)
+        builder.RegisterAssemblyTypes(typeof(CabinPersistence).Assembly)
             .Where(t => t.Name.EndsWith("Persistence"))
             .AsImplementedInterfaces().InstancePerLifetimeScope();
 
-        builder.RegisterAssemblyTypes(typeof(BranchService).Assembly)
+        builder.RegisterAssemblyTypes(typeof(CabinService).Assembly)
             .Where(t => t.Name.EndsWith("Service"))
             .AsImplementedInterfaces().InstancePerLifetimeScope();
     }

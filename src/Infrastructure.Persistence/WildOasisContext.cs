@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using WildOasis.Domain.Entity.Common;
+using WildOasis.Domain.Entity;
 
 namespace WildOasis.Infrastructure.Persistence
 {
-    public class WildOasisContext : DbContext
+    public class WildOasisContext : IdentityDbContext<ApplicationUser>
     {
         private readonly IConfiguration  _configuration;
 
@@ -13,7 +14,8 @@ namespace WildOasis.Infrastructure.Persistence
             _configuration = configuration;
         }
 
-        public virtual DbSet<Branch> BranchSet { get; set; }
+        public virtual DbSet<Cabin> CabinSet { get; set; }
+        public virtual DbSet<Customer> CustomerSet { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

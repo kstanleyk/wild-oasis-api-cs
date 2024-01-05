@@ -15,5 +15,5 @@ public interface IServiceBase<TModel> : IDisposable where TModel : class, IEntit
     Task<RepositoryActionResult<TModel>> EditAsync(TModel model);
     Task<RepositoryActionResult<TModel>> DeleteAsync(TModel model);
 
-    Task<TModel> GetAsync(string tenant, string code);
+    Task<TModel> GetAsync(string code);
 }

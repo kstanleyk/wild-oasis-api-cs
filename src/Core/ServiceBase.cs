@@ -65,9 +65,9 @@ public abstract class ServiceBase<TEntity, TModel> : DomainBase, IServiceBase<TM
         return models;
     }
 
-    public virtual async Task<TModel> GetAsync(string tenant, string code)
+    public virtual async Task<TModel> GetAsync(string code)
     {
-        var entity = await _persistence.GetAsync(tenant, code);
+        var entity = await _persistence.GetAsync(code);
         return _mapper.Map<TModel>(entity);
     }
 

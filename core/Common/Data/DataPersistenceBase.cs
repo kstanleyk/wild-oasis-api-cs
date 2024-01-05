@@ -101,65 +101,6 @@ public abstract class DataPersistenceBase<TEntity, TContext> : Disposable, IData
         }
     }
 
-    //public virtual async Task<RepositoryActionResult<TEntity>> AddAsync(TEntity entity,
-    //    Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, string>> sortOrder, string keySelector,
-    //    int propertyLength)
-    //{
-    //    await using var tx = await Context.Database.BeginTransactionAsync();
-    //    try
-    //    {
-    //        var lastEntity = DbSet.Where(filter).OrderByDescending(sortOrder).ToArray().FirstOrDefault();
-
-    //        var lastCode = string.Empty;
-
-
-    //        if (lastEntity == null)
-    //        {
-    //            lastCode = "1";
-    //        }
-    //        else
-    //        {
-    //            var properties = lastEntity.GetType().GetProperties().ToList();
-    //            foreach (var property in properties)
-    //            {
-    //                if (property.Name != keySelector) continue;
-    //                var value = property.GetValue(lastEntity, null);
-    //                lastCode = (value?.ToString().ToNumValue() + 1)
-    //                    .ToNumValue().ToString(CultureInfo.InvariantCulture);
-    //                break;
-    //            }
-    //        }
-
-    //        var serial = GetEntityCode(lastCode, propertyLength);
-    //        var targetProperties = entity.GetType().GetProperties().ToList();
-    //        foreach (var property in targetProperties.Where(property => property.Name == keySelector))
-    //        {
-    //            property.SetValue(entity, serial, null);
-    //            break;
-    //        }
-
-    //        DbSet.Add(entity);
-
-    //        var result = await SaveChangesAsync();
-    //        if (result == 0)
-    //        {
-    //            await tx.RollbackAsync();
-    //            return new RepositoryActionResult<TEntity>(entity, RepositoryActionStatus.NothingModified);
-    //        }
-
-
-    //        await tx.CommitAsync();
-
-    //        return new RepositoryActionResult<TEntity>(entity, RepositoryActionStatus.Created);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        await tx.RollbackAsync();
-    //        return new RepositoryActionResult<TEntity>(null, RepositoryActionStatus.Error, ex);
-    //    }
-    //}
-
-
     public virtual async Task<RepositoryActionResult<TEntity>> AddAsync(TEntity entity,
     Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, string>> sortOrder, string keySelector,
     int propertyLength)
@@ -311,7 +252,7 @@ public abstract class DataPersistenceBase<TEntity, TContext> : Disposable, IData
         {
             var itemsToDelete = await DbSet.ToArrayAsync();
             DbSet.RemoveRange(itemsToDelete);
-            var result = await SaveChangesAsync();
+            await SaveChangesAsync();
             return new RepositoryActionResult<TEntity>(null, RepositoryActionStatus.Deleted);
         }
         catch (Exception ex)
@@ -399,7 +340,7 @@ public abstract class DataPersistenceBase<TEntity, TContext> : Disposable, IData
 
     public virtual async Task<TEntity> GetAsync(TEntity entity) => await ItemToGetAsync(entity);
 
-    public virtual async Task<TEntity> GetAsync(string tenant, string entity) => await ItemToGetAsync(tenant, entity);
+    public virtual async Task<TEntity> GetAsync(string entity) => await ItemToGetAsync(entity);
 
     public virtual async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> where) =>
         await DbSet.Where(where).FirstOrDefaultAsync();
@@ -431,7 +372,7 @@ public abstract class DataPersistenceBase<TEntity, TContext> : Disposable, IData
 
     protected virtual async Task<TEntity> ItemToGetAsync(TEntity entity) => await Task.FromResult(entity);
 
-    protected virtual async Task<TEntity> ItemToGetAsync(string tenant, string entity) => await Task.FromResult(new TEntity());
+    protected virtual async Task<TEntity> ItemToGetAsync(string entity) => await Task.FromResult(new TEntity());
 
     protected async Task<int> SaveChangesAsync() => await Context.SaveChangesAsync();
 

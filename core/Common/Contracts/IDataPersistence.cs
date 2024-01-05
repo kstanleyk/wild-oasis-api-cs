@@ -9,7 +9,7 @@ namespace Core.Common.Contracts;
 public interface IDataPersistence<TEntity> : IDisposable, IDataPersistenceBase where TEntity : class
 {
     Task<TEntity> GetAsync(TEntity entity);
-    Task<TEntity> GetAsync(string tenant, string entity);
+    Task<TEntity> GetAsync(string entity);
     Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> where);
     Task<TEntity[]> GetAllAsync();
     Task<TEntity[]> GetAllAsync(int page, int count);

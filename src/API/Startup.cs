@@ -36,14 +36,14 @@ public class Startup
 
         services.AddControllersWithViews(config =>
         {
-            var policy = new AuthorizationPolicyBuilder()
-                .RequireAuthenticatedUser()
-                .Build();
+            //var policy = new AuthorizationPolicyBuilder()
+            //    .RequireAuthenticatedUser()
+            //    .Build();
 
-            config.Filters.Add(new AuthorizeFilter(policy));
+            //config.Filters.Add(new AuthorizeFilter(policy));
 
-            var performanceFilter = new TrackPerformanceFilter("wild-oasis-api", "Core API");
-            config.Filters.Add(performanceFilter);
+            //var performanceFilter = new TrackPerformanceFilter("wild-oasis-api", "Core API");
+            //config.Filters.Add(performanceFilter);
         });
 
         services.AddStackExchangeRedisCache(options =>
